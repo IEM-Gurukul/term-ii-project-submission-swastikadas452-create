@@ -1,23 +1,23 @@
 class Booking {
-    private Room room;
+    private int bookingId;
     private Customer customer;
+    private Room room;
 
-    public Booking(Room room, Customer customer) {
-        this.room = room;
+    public Booking(int bookingId, Customer customer, Room room) {
+        this.bookingId = bookingId;
         this.customer = customer;
+        this.room = room;
     }
 
-    public void confirmBooking() {
-        if (room.isAvailable()) {
-            room.bookRoom();
-            System.out.println("Booking confirmed for " + customer.getName());
-        } else {
-            System.out.println("Room is not available.");
-        }
+    public int getBookingId() {
+        return bookingId;
     }
 
-    public void displayBooking() {
-        System.out.println("Room: " + room.getRoomNumber() + " (" + room.getRoomType() + ")");
-        System.out.println("Customer: " + customer.getName());
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Room getRoom() {
+        return room;
     }
 }

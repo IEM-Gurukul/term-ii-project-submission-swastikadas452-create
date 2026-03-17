@@ -20,7 +20,12 @@ Hotel administrators, Reception staff, and Hotel managers, and Customer.
 ---
 
 ## Core Features
-
+- Room availability tracking
+- Booking and reservation management
+- Booking modification and cancellation
+- Customer record management
+- Prevention of double booking
+- Booking validation to prevent invalid reservations
 
 
 ---

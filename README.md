@@ -14,6 +14,7 @@ The NivoraStay-Intelligent Hotel Reservation System aims to solve these problems
 ---
 
 ## Target User
+Hotel administrators, Reception staff, and Hotel managers, and Customer.
 
 
 ---

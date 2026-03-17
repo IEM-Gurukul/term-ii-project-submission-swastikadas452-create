@@ -1,60 +1,33 @@
 import java.util.*;
 
 class BookingManager {
-    private ArrayList<Room> rooms;
-    private HashMap<Integer, Customer> customers;
+    private ArrayList<Room> rooms = new ArrayList<>();
+    private HashMap<Integer, Customer> customers = new HashMap<>();
 
-    // Constructor
-    public BookingManager() {
-        rooms = new ArrayList<>();
-        customers = new HashMap<>();
-    }
-
-    // Add room
     public void addRoom(Room room) {
         rooms.add(room);
     }
 
-    // Add customer
     public void addCustomer(Customer customer) {
         customers.put(customer.getCustomerId(), customer);
     }
 
-    // Show available rooms
     public void showAvailableRooms() {
-        for (Room room : rooms) {
-            if (room.isAvailable()) {
-                room.displayRoom();
-            }
+        for (Room r : rooms) {
+            if (r.isAvailable()) r.displayRoom();
         }
     }
 
-    // Book room
-    public void bookRoom(int roomNumber, int customerId) {
-        Room selectedRoom = null;
-
-        for (Room room : rooms) {
-            if (room.getRoomNumber() == roomNumber) {
-                selectedRoom = room;
-                break;
+    public void bookRoom(int roomNo, int custId) {
+        for (Room r : rooms) {
+            if (r.getRoomNumber() == roomNo) {
+                if (r.isAvailable()) {
+                    r.bookRoom();
+                    System.out.println("Booked for " + customers.get(custId).getName());
+                } else {
+                    System.out.println("Room already booked");
+                }
             }
-        }
-
-        if (selectedRoom == null) {
-            System.out.println("Room not found.");
-            return;
-        }
-
-        if (!customers.containsKey(customerId)) {
-            System.out.println("Customer not found.");
-            return;
-        }
-
-        if (selectedRoom.isAvailable()) {
-            selectedRoom.bookRoom();
-            System.out.println("Booking successful for " + customers.get(customerId).getName());
-        } else {
-            System.out.println("Room already booked.");
         }
     }
 }

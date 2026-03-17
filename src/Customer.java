@@ -4,7 +4,6 @@ class Customer {
     private String phoneNumber;
     private String email;
 
-    // Constructor
     public Customer(int customerId, String name, String phoneNumber, String email) {
         this.customerId = customerId;
         this.name = name;
@@ -12,7 +11,6 @@ class Customer {
         this.email = email;
     }
 
-    // Getters
     public int getCustomerId() {
         return customerId;
     }
@@ -29,11 +27,20 @@ class Customer {
         return email;
     }
 
-    // Display customer details
+    // Setters (for update)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void displayCustomer() {
-        System.out.println("Customer ID: " + customerId);
-        System.out.println("Name: " + name);
-        System.out.println("Phone: " + phoneNumber);
-        System.out.println("Email: " + email);
+        System.out.println("ID: " + customerId + ", Name: " + name + ", Phone: " + phoneNumber + ", Email: " + email);
     }
 }

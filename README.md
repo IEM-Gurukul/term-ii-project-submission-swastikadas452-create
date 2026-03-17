@@ -2,32 +2,29 @@
 # PCCCS495 – Term II Project
 
 ## Project Title
+NivoraStay– Intelligent Hotel Reservation System
 
 ---
 
 ## Problem Statement (max 150 words)
 
+
 ---
 
 ## Target User
+
 
 ---
 
 ## Core Features
 
-- 
-- 
-- 
+
 
 ---
 
 ## OOP Concepts Used
 
-- Abstraction:
-- Inheritance:
-- Polymorphism:
-- Exception Handling:
-- Collections / Threads:
+
 
 ---
 

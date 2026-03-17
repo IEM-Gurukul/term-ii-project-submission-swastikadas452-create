@@ -26,11 +26,8 @@ public class Main {
 
             switch (choice) {
 
-                case 1:
-                    manager.showAvailableRooms();
-                    break;
 
-                case 2:
+                case 1:
                     System.out.print("Enter Customer ID: ");
                     int id = sc.nextInt();
                     sc.nextLine();
@@ -48,17 +45,17 @@ public class Main {
                     System.out.println("Customer added successfully.");
                     break;
 
-                case 3:
+                case 2:
                     System.out.print("Enter Room Number: ");
                     int roomNo = sc.nextInt();
 
                     System.out.print("Enter Customer ID: ");
                     int custId = sc.nextInt();
 
-                    manager.bookRoom(roomNo, custId);
+                    manager.bookRoom(1, custId, roomNo);
                     break;
 
-                case 4:
+                case 3:
                     System.out.print("Enter Customer ID: ");
                     int uid = sc.nextInt();
                     sc.nextLine();
@@ -72,10 +69,9 @@ public class Main {
                     System.out.print("Enter New Email: ");
                     String newEmail = sc.nextLine();
 
-                    manager.updateCustomer(uid, newName, newPhone, newEmail);
                     break;
 
-                case 5:
+                case 4:
                     System.out.println("Thank you!");
                     System.exit(0);
 

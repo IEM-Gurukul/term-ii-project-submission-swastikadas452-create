@@ -71,6 +71,10 @@ class BookingManager {
             System.out.println("Customer updated successfully.");
         } else {
             System.out.println("Customer not found.");
+if (!isRoomAvailable(room.getRoomNumber())) {
+    System.out.println("❌ Room already booked!");
+    return;
+}
         }
     }
 }

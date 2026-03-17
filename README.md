@@ -56,6 +56,13 @@ Users (customers or administrators) interact with the system through a console-b
 ---
 
 ## How to Run
+1. Open the project folder
+2. Navigate to the src folder
+3. Compile all Java files using:
+   javac *.java
+4. Run the program using:
+   java Main
+5. Follow the instructions displayed on the console
 
 
 ---

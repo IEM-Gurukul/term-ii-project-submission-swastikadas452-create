@@ -45,7 +45,13 @@ Hotel administrators, Reception staff, and Hotel managers, and Customer.
 
 ## Proposed Architecture Description
 
+The system follows a layered object-oriented architecture to ensure clear separation of responsibilities. The core entities of the system include Room, Booking, and Customer classes, which represent real-world hotel components.
 
+A central BookingManager class acts as the controller that manages all booking operations, including room availability checking, reservation processing, and validation to prevent double bookings. It ensures that all interactions between users and the system are handled efficiently.
+
+The system uses collections such as ArrayList to store room data and HashMap to manage customer records for fast access and retrieval. Exception handling is used to manage invalid booking requests.
+
+Users (customers or administrators) interact with the system through a console-based interface, where inputs are processed and results are displayed accordingly. This architecture makes the system modular, scalable, and easy to maintain.
 
 ---
 

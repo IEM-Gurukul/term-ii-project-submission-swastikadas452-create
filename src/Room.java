@@ -1,35 +1,46 @@
 class Room {
     private int roomNumber;
     private boolean isAvailable;
+    private String roomType;
 
     // Constructor
-    public Room(int roomNumber) {
+    public Room(int roomNumber, String roomType) {
         this.roomNumber = roomNumber;
+        this.roomType = roomType;
         this.isAvailable = true;
     }
 
-    // Method to book room
+    // Book room
     public void bookRoom() {
         if (isAvailable) {
             isAvailable = false;
-            System.out.println("Room " + roomNumber + " booked successfully.");
+            System.out.println(roomType + " Room " + roomNumber + " booked successfully.");
         } else {
-            System.out.println("Room " + roomNumber + " is not available.");
+            System.out.println(roomType + " Room " + roomNumber + " is not available.");
         }
     }
 
-    // Method to free room
+    // Free room
     public void freeRoom() {
         isAvailable = true;
-        System.out.println("Room " + roomNumber + " is now available.");
+        System.out.println(roomType + " Room " + roomNumber + " is now available.");
     }
 
-    // Getter methods
+    // Getters
     public int getRoomNumber() {
         return roomNumber;
     }
 
+    public String getRoomType() {
+        return roomType;
+    }
+
     public boolean isAvailable() {
         return isAvailable;
+    }
+
+    // Display details
+    public void displayRoom() {
+        System.out.println("Room No: " + roomNumber + " | Type: " + roomType + " | Available: " + isAvailable);
     }
 }

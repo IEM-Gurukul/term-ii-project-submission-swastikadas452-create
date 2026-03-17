@@ -1,33 +1,65 @@
 import java.util.Scanner;
 
-public class Main {
+class Main {
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
         BookingManager manager = new BookingManager();
 
-        // Sample rooms
-        manager.addRoom(new Room(101, "Standard"));
-        manager.addRoom(new Room(102, "Deluxe"));
-        manager.addRoom(new Room(103, "Premium"));
+        int choice;
 
-        Scanner sc = new Scanner(System.in);
-
-        while (true) {
+        do {
             System.out.println("\n===== Hotel Booking System =====");
-            System.out.println("1. View Available Rooms");
+            System.out.println("1. Add Room");
             System.out.println("2. Add Customer");
             System.out.println("3. Book Room");
-            System.out.println("4. Update Customer");
-            System.out.println("5. Exit");
+            System.out.println("4. View Bookings");
+            System.out.println("5. View Customers");
+            System.out.println("6. Cancel Booking");
+            System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
 
-            int choice = sc.nextInt();
-            sc.nextLine(); // clear buffer
+            choice = sc.nextInt();
 
             switch (choice) {
 
-
+                // ⭐ Dynamic Room Creation (Inheritance)
                 case 1:
+                    System.out.println("Select Room Type:");
+                    System.out.println("1. Standard");
+                    System.out.println("2. Deluxe");
+                    System.out.println("3. Premium");
+
+                    int type = sc.nextInt();
+
+                    System.out.print("Enter Room Number: ");
+                    int roomNo = sc.nextInt();
+
+                    Room room = null;
+
+                    switch (type) {
+                        case 1:
+                            room = new StandardRoom(roomNo);
+                            break;
+                        case 2:
+                            room = new DeluxeRoom(roomNo);
+                            break;
+                        case 3:
+                            room = new PremiumRoom(roomNo);
+                            break;
+                        default:
+                            System.out.println("Invalid room type!");
+                            break;
+                    }
+
+                    if (room != null) {
+                        manager.addRoom(room);
+                        System.out.println("✅ Room added successfully!");
+                    }
+                    break;
+
+                // Add Customer
+                case 2:
                     System.out.print("Enter Customer ID: ");
                     int id = sc.nextInt();
                     sc.nextLine();
@@ -41,43 +73,54 @@ public class Main {
                     System.out.print("Enter Email: ");
                     String email = sc.nextLine();
 
-                    manager.addCustomer(new Customer(id, name, phone, email));
-                    System.out.println("Customer added successfully.");
+                    Customer c = new Customer(id, name, phone, email);
+                    manager.addCustomer(c);
+
+                    System.out.println("✅ Customer added!");
                     break;
 
-                case 2:
-                    System.out.print("Enter Room Number: ");
-                    int roomNo = sc.nextInt();
+                // Book Room
+                case 3:
+                    System.out.print("Enter Booking ID: ");
+                    int bookingId = sc.nextInt();
 
                     System.out.print("Enter Customer ID: ");
                     int custId = sc.nextInt();
 
-                    manager.bookRoom(1, custId, roomNo);
+                    System.out.print("Enter Room Number: ");
+                    int rNo = sc.nextInt();
+
+                    manager.bookRoom(bookingId, custId, rNo);
                     break;
 
-                case 3:
-                    System.out.print("Enter Customer ID: ");
-                    int uid = sc.nextInt();
-                    sc.nextLine();
-
-                    System.out.print("Enter New Name: ");
-                    String newName = sc.nextLine();
-
-                    System.out.print("Enter New Phone: ");
-                    String newPhone = sc.nextLine();
-
-                    System.out.print("Enter New Email: ");
-                    String newEmail = sc.nextLine();
-
-                    break;
-
+                // View Bookings
                 case 4:
+                    manager.showAllBookings();
+                    break;
+
+                // View Customers
+                case 5:
+                    manager.showAllCustomers();
+                    break;
+
+                // Cancel Booking
+                case 6:
+                    System.out.print("Enter Booking ID: ");
+                    int cancelId = sc.nextInt();
+
+                    manager.cancelBooking(cancelId);
+                    break;
+
+                case 7:
                     System.out.println("Thank you!");
-                    System.exit(0);
+                    break;
 
                 default:
-                    System.out.println("Invalid choice.");
+                    System.out.println("Invalid choice!");
             }
-        }
+
+        } while (choice != 7);
+
+        sc.close();
     }
 }

@@ -1,46 +1,30 @@
 class Customer {
-    private int customerId;
+    private int id;
     private String name;
-    private String phoneNumber;
+    private String phone;
     private String email;
 
-    public Customer(int customerId, String name, String phoneNumber, String email) {
-        this.customerId = customerId;
+    public Customer(int id, String name, String phone, String email) {
+        this.id = id;
         this.name = name;
-        this.phoneNumber = phoneNumber;
+        this.phone = phone;
         this.email = email;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    // ✅ ADD THESE METHODS (IMPORTANT)
+    public int getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
     public String getEmail() {
         return email;
-    }
-
-    // Setters (for update)
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void displayCustomer() {
-        System.out.println("ID: " + customerId + ", Name: " + name + ", Phone: " + phoneNumber + ", Email: " + email);
     }
 }

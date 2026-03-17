@@ -1,80 +1,115 @@
 import java.util.*;
 
 class BookingManager {
-    private ArrayList<Room> rooms;
-    private HashMap<Integer, Customer> customers;
 
-    // Constructor
-    public BookingManager() {
-        rooms = new ArrayList<>();
-        customers = new HashMap<>();
-    }
+    private ArrayList<Room> rooms = new ArrayList<>();
+    private HashMap<Integer, Customer> customers = new HashMap<>();
+    private ArrayList<Booking> bookings = new ArrayList<>();
 
-    // Add room
+    // ================= ROOM =================
+
     public void addRoom(Room room) {
         rooms.add(room);
     }
 
-    // Add customer
+    public Room findRoom(int roomNumber) {
+        for (Room r : rooms) {
+            if (r.getRoomNumber() == roomNumber) {
+                return r;
+            }
+        }
+        return null;
+    }
+
+    // ================= CUSTOMER =================
+
     public void addCustomer(Customer customer) {
-        customers.put(customer.getCustomerId(), customer);
+        customers.put(customer.getId(), customer);
     }
 
-    // Show available rooms
-    public void showAvailableRooms() {
-        for (Room room : rooms) {
-            if (room.isAvailable()) {
-                room.displayRoom();
-            }
-        }
+    public Customer getCustomer(int id) {
+        return customers.get(id);
     }
 
-    // Book room
-    public void bookRoom(int roomNumber, int customerId) {
-        Room selectedRoom = null;
-
-        // Find room
-        for (Room room : rooms) {
-            if (room.getRoomNumber() == roomNumber) {
-                selectedRoom = room;
-                break;
-            }
-        }
-
-        if (selectedRoom == null) {
-            System.out.println("Room not found.");
+    public void showAllCustomers() {
+        if (customers.isEmpty()) {
+            System.out.println("No customers found.");
             return;
         }
 
-        if (!customers.containsKey(customerId)) {
-            System.out.println("Customer not found.");
-            return;
-        }
-
-        if (selectedRoom.isAvailable()) {
-            selectedRoom.bookRoom();
-            System.out.println("Booking successful for " + customers.get(customerId).getName());
-        } else {
-            System.out.println("Room already booked.");
+        System.out.println("===== Customers =====");
+        for (Customer c : customers.values()) {
+            System.out.println(c.getId() + " - " + c.getName());
         }
     }
 
-    // ✅ UPDATE CUSTOMER (IMPORTANT)
-    public void updateCustomer(int customerId, String name, String phone, String email) {
-        if (customers.containsKey(customerId)) {
-            Customer c = customers.get(customerId);
+    // ================= BOOKING =================
 
-            c.setName(name);
-            c.setPhoneNumber(phone);
-            c.setEmail(email);
-
-            System.out.println("Customer updated successfully.");
-        } else {
-            System.out.println("Customer not found.");
-if (!isRoomAvailable(room.getRoomNumber())) {
-    System.out.println("❌ Room already booked!");
-    return;
-}
+    // 🔥 Prevent double booking
+    public boolean isRoomAvailable(int roomNumber) {
+        for (Booking b : bookings) {
+            if (b.getRoom().getRoomNumber() == roomNumber) {
+                return false;
+            }
         }
+        return true;
+    }
+
+    // 🔥 Book room with validation
+    public void bookRoom(int bookingId, int customerId, int roomNumber) {
+
+        Customer customer = getCustomer(customerId);
+        Room room = findRoom(roomNumber);
+
+        // ❌ Invalid booking
+        if (customer == null || room == null) {
+            System.out.println("❌ Invalid booking! Customer or Room not found.");
+            return;
+        }
+
+        // ❌ Double booking prevention
+        if (!isRoomAvailable(roomNumber)) {
+            System.out.println("❌ Room already booked!");
+            return;
+        }
+
+        Booking booking = new Booking(bookingId, customer, room);
+        bookings.add(booking);
+
+        System.out.println("✅ Booking successful!");
+    }
+
+    // Show all bookings
+    public void showAllBookings() {
+        if (bookings.isEmpty()) {
+            System.out.println("No bookings found.");
+            return;
+        }
+
+        System.out.println("===== All Bookings =====");
+
+        for (Booking b : bookings) {
+            System.out.println("Booking ID: " + b.getBookingId());
+            System.out.println("Customer: " + b.getCustomer().getName());
+            System.out.println("Room: " + b.getRoom().getRoomNumber() + 
+                               " (" + b.getRoom().getRoomType() + ")");
+            System.out.println("----------------------");
+        }
+    }
+
+    // Cancel booking
+    public void cancelBooking(int bookingId) {
+        Iterator<Booking> it = bookings.iterator();
+
+        while (it.hasNext()) {
+            Booking b = it.next();
+            if (b.getBookingId() == bookingId) {
+                it.remove();
+                System.out.println("✅ Booking cancelled!");
+                return;
+            }
+        }
+
+        System.out.println("❌ Booking not found!");
     }
 }

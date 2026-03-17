@@ -31,6 +31,13 @@ Hotel administrators, Reception staff, and Hotel managers, and Customer.
 ---
 
 ## OOP Concepts Used
+- Abstraction
+- Inheritance (e.g., different types of rooms like DeluxeRoom extending Room)
+- Polymorphism (e.g., different booking confirmation methods)
+- Encapsulation
+- Exception Handling
+- Singleton Design Pattern (BookingManager)
+- Collections (ArrayList for rooms, HashMap for customers)
 
 
 
@@ -38,9 +45,12 @@ Hotel administrators, Reception staff, and Hotel managers, and Customer.
 
 ## Proposed Architecture Description
 
+
+
 ---
 
 ## How to Run
+
 
 ---
 

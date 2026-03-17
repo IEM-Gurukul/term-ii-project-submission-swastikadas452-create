@@ -7,7 +7,9 @@ NivoraStay– Intelligent Hotel Reservation System
 ---
 
 ## Problem Statement (max 150 words)
+Many small and medium hotels still rely on manual booking systems or simple spreadsheets to manage reservations. These methods often lead to issues such as double bookings, difficulty tracking room availability, and inefficient customer record management. As a result, hotel staff may struggle to confirm reservations quickly and maintain accurate data.
 
+The NivoraStay-Intelligent Hotel Reservation System aims to solve these problems by providing a structured digital solution using object-oriented design. It models rooms, bookings, and customers as separate objects and uses a centralized BookingManager to handle reservation processing and availability validation, improving efficiency and reducing errors.
 
 ---
 

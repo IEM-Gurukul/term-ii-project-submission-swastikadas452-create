@@ -1,0 +1,28 @@
+SYSTEM DESIGN
+
+This project follows an object-oriented architecture.
+
+Main Components:
+
+1. Room (Base Class):
+   - Represents hotel rooms
+   - Extended by StandardRoom, DeluxeRoom, PremiumRoom
+
+2. Customer:
+   - Stores customer details like ID, name, phone, email
+
+3. Booking:
+   - Links customer and room
+   - Stores booking ID and details
+
+4. BookingManager:
+   - Central controller
+   - Handles booking, validation, and customer management
+
+Design Approach:
+- Inheritance is used for room types
+- Encapsulation is used for data protection
+- Collections (ArrayList, HashMap) are used for storage
+- Validation logic prevents double booking
+
+This structure ensures modular, scalable, and maintainable system design.

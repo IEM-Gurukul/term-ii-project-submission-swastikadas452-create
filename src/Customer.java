@@ -11,7 +11,7 @@ class Customer {
         this.email = email;
     }
 
-    // ✅ ADD THESE METHODS (IMPORTANT)
+    // ADD THESE METHODS 
     public int getId() {
         return id;
     }

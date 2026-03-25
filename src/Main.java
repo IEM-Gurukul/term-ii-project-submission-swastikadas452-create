@@ -23,7 +23,7 @@ class Main {
 
             switch (choice) {
 
-                // ⭐ Dynamic Room Creation (Inheritance)
+                //  Dynamic Room Creation (Inheritance)
                 case 1:
                     System.out.println("Select Room Type:");
                     System.out.println("1. Standard");
@@ -54,7 +54,7 @@ class Main {
 
                     if (room != null) {
                         manager.addRoom(room);
-                        System.out.println("✅ Room added successfully!");
+                        System.out.println(" Room added successfully!");
                     }
                     break;
 
@@ -76,7 +76,7 @@ class Main {
                     Customer c = new Customer(id, name, phone, email);
                     manager.addCustomer(c);
 
-                    System.out.println("✅ Customer added!");
+                    System.out.println(" Customer added!");
                     break;
 
                 // Book Room

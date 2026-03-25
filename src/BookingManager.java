@@ -6,7 +6,7 @@ class BookingManager {
     private HashMap<Integer, Customer> customers = new HashMap<>();
     private ArrayList<Booking> bookings = new ArrayList<>();
 
-    // ================= ROOM =================
+    // FOR ROOM 
 
     public void addRoom(Room room) {
         rooms.add(room);
@@ -21,7 +21,7 @@ class BookingManager {
         return null;
     }
 
-    // ================= CUSTOMER =================
+    // FOR CUSTOMER 
 
     public void addCustomer(Customer customer) {
         customers.put(customer.getId(), customer);
@@ -43,9 +43,9 @@ class BookingManager {
         }
     }
 
-    // ================= BOOKING =================
+    // FOR BOOKING 
 
-    // 🔥 Prevent double booking
+    //  Prevent double booking
     public boolean isRoomAvailable(int roomNumber) {
         for (Booking b : bookings) {
             if (b.getRoom().getRoomNumber() == roomNumber) {
@@ -55,28 +55,28 @@ class BookingManager {
         return true;
     }
 
-    // 🔥 Book room with validation
+    //  Book room with validation
     public void bookRoom(int bookingId, int customerId, int roomNumber) {
 
         Customer customer = getCustomer(customerId);
         Room room = findRoom(roomNumber);
 
-        // ❌ Invalid booking
+        //  Invalid booking
         if (customer == null || room == null) {
-            System.out.println("❌ Invalid booking! Customer or Room not found.");
+            System.out.println(" Invalid booking! Customer or Room not found.");
             return;
         }
 
-        // ❌ Double booking prevention
+        //  Double booking prevention
         if (!isRoomAvailable(roomNumber)) {
-            System.out.println("❌ Room already booked!");
+            System.out.println(" Room already booked!");
             return;
         }
 
         Booking booking = new Booking(bookingId, customer, room);
         bookings.add(booking);
 
-        System.out.println("✅ Booking successful!");
+        System.out.println(" Booking successful!");
     }
 
     // Show all bookings
@@ -105,11 +105,11 @@ class BookingManager {
             Booking b = it.next();
             if (b.getBookingId() == bookingId) {
                 it.remove();
-                System.out.println("✅ Booking cancelled!");
+                System.out.println(" Booking cancelled!");
                 return;
             }
         }
 
-        System.out.println("❌ Booking not found!");
+        System.out.println(" Booking not found!");
     }
 }
